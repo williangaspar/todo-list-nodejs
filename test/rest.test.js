@@ -33,7 +33,7 @@ describe("Rest Tarefas", () => {
   it("criar nova tarefa", (done) => {
 
     Tarefa.prototype.save = function (cb) {
-      return cb(null);
+      return cb(null, {_id:100});
     }
 
     const tarefa = {
