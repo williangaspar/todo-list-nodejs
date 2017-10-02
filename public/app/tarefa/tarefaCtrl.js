@@ -23,11 +23,12 @@ function TarefaCtrl($scope, Tarefa, $mdDialog) {
   $scope.cadastrar = function () {
     showCadTarefa().then(onResult);
     function onResult(tarefa) {
-      Tarefa.salvar(tarefa, onResponse);
+      Tarefa.cadastrar(tarefa, onResponse);
       function onResponse(response) {
         if (response.status !== 200 || response.data.error) {
           alert("Não foi possível efetuar o cadastro");
         } else {
+          tarefa._id = response.data.id;
           $scope.tarefas.push(tarefa);
         }
       }

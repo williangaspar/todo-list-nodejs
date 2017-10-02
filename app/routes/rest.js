@@ -25,7 +25,13 @@ router.post("/tarefa", (req, res) => {
     "finalizada": req.body.finalizada
   });
 
-  tarefa.save((err) => respond(res, err, 400));
+  tarefa.save((err, data) => {
+    if (err) {
+      res.json({ error: 500 });
+    } else {
+      res.json({ success: true, id: data._id });
+    }
+  });
 });
 
 // Atualiza uma tarefa
