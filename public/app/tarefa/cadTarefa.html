@@ -1,0 +1,31 @@
+<md-dialog>
+  <md-dialog-content class="md-dialog-content">
+
+    <h2 class="md-title">{{vm.nova ? "Nova Tarefa": "Edição de Tarefa"}}</h2>
+
+    <form name="cadForm">
+      <md-input-container>
+        <label>Titulo</label>
+        <input ng-model="vm.tarefa.titulo" size="30" required>
+      </md-input-container>
+  
+      <md-input-container>
+        <label>Descrição</label>
+        <input ng-model="vm.tarefa.descricao" size="60" required>
+      </md-input-container>
+  
+      <md-checkbox name="finalizada" ng-model="vm.tarefa.finalizada">
+        Finalizada
+      </md-checkbox>
+    </form>
+
+  </md-dialog-content>
+
+  <div class="md-actions">
+    <md-button 
+      class="md-primary" ng-click="vm.salvar()" ng-disabled="!cadForm.$valid">Salvar
+    </md-button>
+    <md-button class="md-sencondary" ng-click="vm.cancelar()">Cancelar</md-button>
+  </div>
+
+</md-dialog>

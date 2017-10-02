@@ -1,0 +1,43 @@
+<md-content>
+  <md-toolbar class="md-hue-2">
+    <h2 flex="" md-truncate="">&nbsp;Todo List</h2>
+  </md-toolbar>
+
+  <md-input-container>
+    <md-button class="md-primary md-raised" ng-click="cadastrar()">Nova Tarefa</md-button>
+  </md-input-container>
+
+  <md-table-container>
+    <table md-table ng-model="selected" md-progress="promise">
+      <thead md-head md-order="query.order" md-on-reorder="onReorder">
+        <tr md-row>
+          <th md-column md-order-by="titulo"><span>Titulo</span></th>
+          <th md-column md-order-by="descricao"><span>Descricao</span></th>
+          <th md-column><span>Feita</span></th>
+          <th md-column><span>Editar</span></th>
+          <th md-column><span>Excluir</span></th>
+        </tr>
+      </thead>
+      <tbody md-body>
+        <tr md-row md-auto-select ng-repeat="tarefa in tarefas | orderBy: query.order ">
+          <td md-cell>{{tarefa.titulo}}</td>
+          <td md-cell>{{tarefa.descricao}}</td>
+          <td md-cell>
+            <md-checkbox name="finalizada" ng-model="tarefa.finalizada" aria-label="finalizada"  ng-change="feita(tarefa._id)">
+            </md-checkbox>
+          </td>
+          <td md-cell>
+            <md-button class="md-icon-button fade " aria-label="Editar" ng-click="editar(tarefa._id)">
+              <md-icon class="mdi mdi-pencil mdi-36px editIcon"></md-icon>
+            </md-button>
+          </td>
+          <td md-cell>
+            <md-button class="md-icon-button fade" aria-label="Excluir" ng-click="excluir(tarefa._id)">
+              <md-icon class="mdi mdi-delete mdi-36px"></md-icon>
+            </md-button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+</md-content>
